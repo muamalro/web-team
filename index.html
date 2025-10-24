@@ -1,1 +1,563 @@
-<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>IT Team - University of Babylon</title>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    <style>        * {            margin: 0;            padding: 0;            box-sizing: border-box;            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;        }        :root {            --primary: #6a11cb;            --secondary: #2575fc;            --accent: #00c9ff;            --dark: #0f0f1e;            --darker: #080811;            --light: #f0f0f0;            --gray: #2a2a3a;            --card-bg: #1a1a2e;            --text-secondary: #a0a0c0;        }        body {            background-color: var(--dark);            color: var(--light);            line-height: 1.6;            overflow-x: hidden;        }        .container {            width: 90%;            max-width: 1200px;            margin: 0 auto;            padding: 20px;        }        /* Header Styles */        header {            background-color: var(--darker);            padding: 20px 0;            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);            position: sticky;            top: 0;            z-index: 100;            backdrop-filter: blur(10px);        }        .header-content {            display: flex;            justify-content: space-between;            align-items: center;        }        .logo {            display: flex;            align-items: center;            gap: 15px;        }        .logo-icon {            font-size: 2.5rem;            background: linear-gradient(to right, var(--primary), var(--accent));            -webkit-background-clip: text;            background-clip: text;            color: transparent;        }        .logo-text {            font-size: 1.8rem;            font-weight: 700;            background: linear-gradient(to right, var(--primary), var(--accent));            -webkit-background-clip: text;            background-clip: text;            color: transparent;        }        .nav-links {            display: flex;            gap: 30px;        }        .nav-links a {            color: var(--light);            text-decoration: none;            font-weight: 500;            transition: color 0.3s;            position: relative;        }        .nav-links a:hover {            color: var(--accent);        }        .nav-links a::after {            content: '';            position: absolute;            bottom: -5px;            left: 0;            width: 0;            height: 2px;            background: linear-gradient(to right, var(--primary), var(--accent));            transition: width 0.3s;        }        .nav-links a:hover::after {            width: 100%;        }        /* Hero Section */        .hero {            padding: 120px 0;            text-align: center;            background: linear-gradient(135deg, rgba(15, 15, 30, 0.9), rgba(26, 26, 46, 0.9)),                         radial-gradient(circle at 20% 80%, var(--primary), transparent 25%),                        radial-gradient(circle at 80% 20%, var(--secondary), transparent 25%);            position: relative;            overflow: hidden;        }        .hero::before {            content: '';            position: absolute;            top: -50%;            left: -50%;            width: 200%;            height: 200%;            background: radial-gradient(circle, rgba(106, 17, 203, 0.1) 0%, transparent 70%);            animation: pulse 15s infinite linear;        }        @keyframes pulse {            0% { transform: rotate(0deg); }            100% { transform: rotate(360deg); }        }        .hero h1 {            font-size: 3.5rem;            margin-bottom: 20px;            background: linear-gradient(to right, var(--primary), var(--accent));            -webkit-background-clip: text;            background-clip: text;            color: transparent;            position: relative;        }        .hero p {            font-size: 1.2rem;            max-width: 700px;            margin: 0 auto 30px;            color: var(--text-secondary);            position: relative;        }        .university-badge {            display: inline-flex;            align-items: center;            gap: 10px;            background: linear-gradient(135deg, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.2));            padding: 12px 25px;            border-radius: 30px;            margin-top: 20px;            backdrop-filter: blur(5px);            border: 1px solid rgba(106, 17, 203, 0.3);            position: relative;        }        .university-badge i {            color: var(--accent);        }        /* Team Section */        .team-section {            padding: 100px 0;            background-color: var(--darker);        }        .section-title {            text-align: center;            margin-bottom: 60px;            position: relative;        }        .section-title h2 {            font-size: 2.5rem;            display: inline-block;            position: relative;        }        .section-title h2::after {            content: '';            position: absolute;            bottom: -10px;            left: 50%;            transform: translateX(-50%);            width: 80px;            height: 4px;            background: linear-gradient(to right, var(--primary), var(--accent));            border-radius: 2px;        }        .team-cards {            display: grid;            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));            gap: 40px;        }        .team-card {            background: linear-gradient(145deg, var(--card-bg), #161627);            border-radius: 20px;            overflow: hidden;            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);            transition: transform 0.4s, box-shadow 0.4s;            position: relative;            border: 1px solid rgba(106, 17, 203, 0.1);            display: flex;            flex-direction: column;            align-items: center;            padding-bottom: 30px;        }        .team-card:hover {            transform: translateY(-15px);            box-shadow: 0 25px 50px rgba(106, 17, 203, 0.3);        }        .team-card::before {            content: '';            position: absolute;            top: 0;            left: 0;            right: 0;            height: 5px;            background: linear-gradient(to right, var(--primary), var(--accent));            z-index: 1;        }        .card-image {            width: 200px;            height: 200px;            border-radius: 50%;            overflow: hidden;            margin: 40px auto 25px;            position: relative;            border: 5px solid transparent;            background: linear-gradient(135deg, var(--primary), var(--accent));            padding: 5px;            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);            transition: transform 0.4s, box-shadow 0.4s;        }        .team-card:hover .card-image {            transform: scale(1.05);            box-shadow: 0 15px 30px rgba(106, 17, 203, 0.4);        }        .card-image img {            width: 100%;            height: 100%;            object-fit: cover;            border-radius: 50%;            transition: transform 0.7s;            filter: brightness(0.9);        }        .team-card:hover .card-image img {            transform: scale(1.1);            filter: brightness(1);        }        .card-content {            padding: 0 30px;            position: relative;            text-align: center;            width: 100%;        }        .card-content h3 {            font-size: 1.6rem;            margin-bottom: 10px;            background: linear-gradient(to right, var(--primary), var(--accent));            -webkit-background-clip: text;            background-clip: text;            color: transparent;        }        .card-content .role {            color: var(--accent);            font-weight: 600;            margin-bottom: 15px;            display: block;            font-size: 1.1rem;        }        .card-content p {            color: var(--text-secondary);            margin-bottom: 25px;            line-height: 1.7;        }        .card-btn {            display: inline-flex;            align-items: center;            gap: 8px;            padding: 12px 25px;            background: linear-gradient(to right, var(--primary), var(--secondary));            color: white;            text-decoration: none;            border-radius: 8px;            font-weight: 600;            transition: all 0.3s;            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);        }        .card-btn:hover {            transform: translateY(-3px);            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.6);            background: linear-gradient(to right, var(--secondary), var(--accent));        }        /* Footer */        footer {            background: linear-gradient(to bottom, var(--darker), #050508);            padding: 50px 0 20px;            text-align: center;            position: relative;        }        footer::before {            content: '';            position: absolute;            top: 0;            left: 0;            right: 0;            height: 1px;            background: linear-gradient(to right, transparent, var(--primary), transparent);        }        .footer-content {            display: flex;            flex-direction: column;            align-items: center;            gap: 20px;        }        .footer-logo {            font-size: 2.2rem;            font-weight: 700;            background: linear-gradient(to right, var(--primary), var(--accent));            -webkit-background-clip: text;            background-clip: text;            color: transparent;        }        .footer-links {            display: flex;            gap: 25px;            margin: 20px 0;        }        .footer-links a {            color: var(--text-secondary);            text-decoration: none;            transition: color 0.3s;            position: relative;        }        .footer-links a:hover {            color: var(--accent);        }        .footer-links a::after {            content: '';            position: absolute;            bottom: -5px;            left: 0;            width: 0;            height: 1px;            background-color: var(--accent);            transition: width 0.3s;        }        .footer-links a:hover::after {            width: 100%;        }        .copyright {            color: var(--text-secondary);            font-size: 0.9rem;            margin-top: 30px;        }        /* Responsive Design */        @media (max-width: 768px) {            .header-content {                flex-direction: column;                gap: 20px;            }            .nav-links {                gap: 15px;            }            .hero h1 {                font-size: 2.5rem;            }            .team-cards {                grid-template-columns: 1fr;            }                        .card-image {                width: 180px;                height: 180px;            }        }    </style></head><body>    <!-- Header -->    <header>        <div class="container">            <div class="header-content">                <div class="logo">                    <i class="fas fa-laptop-code logo-icon"></i>                    <div class="logo-text">IT Team</div>                </div>                <nav class="nav-links">                    <a href="#home">Home</a>                    <a href="#team">Team</a>                    <a href="#projects">Projects</a>                    <a href="#contact">Contact</a>                </nav>            </div>        </div>    </header>    <!-- Hero Section -->    <section class="hero" id="home">        <div class="container">            <h1>College of Information Technology</h1>            <p>We are a dedicated team of third-stage students from the University of Babylon, specializing in Networks. Our passion for technology drives us to create innovative solutions and push the boundaries of what's possible in the IT field.</p>            <div class="university-badge">                <i class="fas fa-university"></i>                <span>University of Babylon - Networks Department</span>            </div>        </div>    </section>    <!-- Team Section -->    <section class="team-section" id="team">        <div class="container">            <div class="section-title">                <h2>Meet Our Team</h2>            </div>            <div class="team-cards">                <!-- Team Leader -->                <div class="team-card">                    <div class="card-image">                        <img src="https://www2.0zz0.com/2025/10/24/13/823884936.png" alt="Muamal Mohammed">                    </div>                    <div class="card-content">                        <h3>Muamal Mohammed</h3>                        <span class="role">Team Leader</span>                        <p>Third-stage student in the Networks Department with a passion for cybersecurity and network architecture. Experienced in leading technical projects and coordinating team efforts.</p>                        <a href="https://muamalro.github.io/portfolio/" class="card-btn" target="_blank">                            <i class="fas fa-external-link-alt"></i> View Portfolio                        </a>                    </div>                </div>                <!-- First Member -->                <div class="team-card">                    <div class="card-image">                        <img src="https://www2.0zz0.com/2025/10/24/12/594583772.jpg" alt="Mohamed Riyadh">                    </div>                    <div class="card-content">                        <h3>Mohamed Riyadh</h3>                        <span class="role">Frontend Developer</span>                        <p>Specializing in web development with a focus on creating responsive and user-friendly interfaces. Skilled in HTML, CSS, JavaScript and modern frameworks.</p>                        <a href="https://mohamedriyadh22.github.io/My-portfolio-/" class="card-btn" target="_blank">                            <i class="fas fa-external-link-alt"></i> View Portfolio                        </a>                    </div>                </div>                <!-- Second Member -->                <div class="team-card">                    <div class="card-image">                        <img src="https://www2.0zz0.com/2025/10/24/12/724078455.jpg" alt="Mohamed Hazem">                    </div>                    <div class="card-content">                        <h3>Mohamed Hazem</h3>                        <span class="role">Backend Developer</span>                        <p>Focused on server-side development and database management. Experienced in building robust APIs and ensuring system security and performance.</p>                        <a href="https://mohammedhazemitnt24.github.io/portfolio/" class="card-btn" target="_blank">                            <i class="fas fa-external-link-alt"></i> View Portfolio                        </a>                    </div>                </div>            </div>        </div>    </section>    <!-- Footer -->    <footer id="contact">        <div class="container">            <div class="footer-content">                <div class="footer-logo">IT Team</div>                <p>University of Babylon - College of Information Technology</p>                <div class="footer-links">                    <a href="#home">Home</a>                    <a href="#team">Team</a>                    <a href="#projects">Projects</a>                    <a href="#contact">Contact</a>                </div>                <div class="copyright">                    &copy; 2023 IT Team - All Rights Reserved                </div>            </div>        </div>    </footer>    <script>        // Smooth scrolling for navigation links        document.querySelectorAll('a[href^="#"]').forEach(anchor => {            anchor.addEventListener('click', function (e) {                e.preventDefault();                document.querySelector(this.getAttribute('href')).scrollIntoView({                    behavior: 'smooth'                });            });        });        // Add animation to team cards when they come into view        const observerOptions = {            threshold: 0.1,            rootMargin: '0px 0px -50px 0px'        };        const observer = new IntersectionObserver((entries) => {            entries.forEach(entry => {                if (entry.isIntersecting) {                    entry.target.style.opacity = '1';                    entry.target.style.transform = 'translateY(0)';                }            });        }, observerOptions);        // Apply animation to team cards        document.querySelectorAll('.team-card').forEach(card => {            card.style.opacity = '0';            card.style.transform = 'translateY(20px)';            card.style.transition = 'opacity 0.5s, transform 0.5s';            observer.observe(card);        });    </script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Team - University of Babylon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #00c9ff;
+            --dark: #0f0f1e;
+            --darker: #080811;
+            --light: #f0f0f0;
+            --gray: #2a2a3a;
+            --card-bg: #1a1a2e;
+            --text-secondary: #a0a0c0;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--darker);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(15, 15, 30, 0.9), rgba(26, 26, 46, 0.9)), 
+                        radial-gradient(circle at 20% 80%, var(--primary), transparent 25%),
+                        radial-gradient(circle at 80% 20%, var(--secondary), transparent 25%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(106, 17, 203, 0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite linear;
+        }
+
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-secondary);
+            position: relative;
+        }
+
+        .university-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.2));
+            padding: 12px 25px;
+            border-radius: 30px;
+            margin-top: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(106, 17, 203, 0.3);
+            position: relative;
+        }
+
+        .university-badge i {
+            color: var(--accent);
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 100px 0;
+            background-color: var(--darker);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .team-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .team-card {
+            background: linear-gradient(145deg, var(--card-bg), #161627);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+            border: 1px solid rgba(106, 17, 203, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 30px;
+        }
+
+        .team-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(106, 17, 203, 0.3);
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            z-index: 1;
+        }
+
+        .card-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 40px auto 25px;
+            position: relative;
+            border: 5px solid transparent;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 5px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .team-card:hover .card-image {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(106, 17, 203, 0.4);
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.7s;
+            filter: brightness(0.9);
+        }
+
+        .team-card:hover .card-image img {
+            transform: scale(1.1);
+            filter: brightness(1);
+        }
+
+        .card-content {
+            padding: 0 30px;
+            position: relative;
+            text-align: center;
+            width: 100%;
+        }
+
+        .card-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-content .role {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .card-content p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .card-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+        }
+
+        .card-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.6);
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to bottom, var(--darker), #050508);
+            padding: 50px 0 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary), transparent);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .team-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-image {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-laptop-code logo-icon"></i>
+                    <div class="logo-text">IT Team</div>
+                </div>
+                <nav class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#team">Team</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>College of Information Technology</h1>
+            <p>We are a dedicated team of third-stage students from the University of Babylon, specializing in Networks. Our passion for technology drives us to create innovative solutions and push the boundaries of what's possible in the IT field.</p>
+            <div class="university-badge">
+                <i class="fas fa-university"></i>
+                <span>University of Babylon - Networks Department</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+            </div>
+            <div class="team-cards">
+                <!-- Team Leader -->
+                <div class="team-card">
+                    <div class="card-image">
+                        <img src="https://www2.0zz0.com/2025/10/24/13/823884936.png" alt="Muamal Mohammed">
+                    </div>
+                    <div class="card-content">
+                        <h3>Muamal Mohammed</h3>
+                        <span class="role">Team Leader</span>
+                        <p>Third-stage student in the Networks Department with a passion for cybersecurity and network architecture. Experienced in leading technical projects and coordinating team efforts.</p>
+                        <a href="https://muamalro.github.io/portfolio/" class="card-btn" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Portfolio
+                        </a>
+                    </div>
+                </div>
+
+                <!-- First Member -->
+                <div class="team-card">
+                    <div class="card-image">
+                        <img src="https://www2.0zz0.com/2025/10/24/12/594583772.jpg" alt="Mohamed Riyadh">
+                    </div>
+                    <div class="card-content">
+                        <h3>Mohamed Riyadh</h3>
+                        <span class="role">Frontend Developer</span>
+                        <p>Specializing in web development with a focus on creating responsive and user-friendly interfaces. Skilled in HTML, CSS, JavaScript and modern frameworks.</p>
+                        <a href="https://mohamedriyadh22.github.io/My-portfolio-/" class="card-btn" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Portfolio
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Second Member -->
+                <div class="team-card">
+                    <div class="card-image">
+                        <img src="https://www2.0zz0.com/2025/10/24/13/804801459.jpg" alt="Mohamed Hazem">
+                    </div>
+                    <div class="card-content">
+                        <h3>Mohamed Hazem</h3>
+                        <span class="role">Backend Developer</span>
+                        <p>Focused on server-side development and database management. Experienced in building robust APIs and ensuring system security and performance.</p>
+                        <a href="https://mohammedhazemitnt24.github.io/portfolio/" class="card-btn" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Portfolio
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">IT Team</div>
+                <p>University of Babylon - College of Information Technology</p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#team">Team</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="copyright">
+                    &copy; 2023 IT Team - All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation to team cards when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to team cards
+        document.querySelectorAll('.team-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
